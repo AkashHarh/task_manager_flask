@@ -1,0 +1,10 @@
+COMPLETED buy
+PENDING cc
+COMPLETED go market
+PENDING buy
+PENDING cc
+COMPLETED buy
+PENDING fd
+PENDING cc
+PENDING buy milk
+COMPLETED go market

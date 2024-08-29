@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Tasks</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='statics.css') }}">
+</head>
+<body>
+    <header>
+        <h1>View Tasks</h1>
+        <a href="{{ url_for('index') }}" class="btn">Back to Task Manager</a>
+    </header>
+    <main>
+        <ul>
+            {% if tasks %}
+                {% for status, task in tasks %}
+                    {% if status == 'PENDING' %}
+                        <li>
+                            {{ loop.index }}. {{ task }}
+                            <form action="{{ url_for('complete_task', task_id=loop.index0) }}" method="post" style="display:inline;">
+                                <button type="submit" class="btn btn-complete">Mark as Complete</button>
+                            </form>
+                            <form action="{{ url_for('delete_task', task_id=loop.index0) }}" method="post" style="display:inline;">
+                                <button type="submit" class="btn btn-delete">Delete</button>
+                            </form>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <li>No tasks available.</li>
+            {% endif %}
+        </ul>
+    </main>
+</body>
+</html>
